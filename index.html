@@ -5,169 +5,158 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Survey on Capsule Coffee Machines</title>
   <style>
-    :root { --w: 860px; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; margin: 0; padding: 0; background:#fafafa; color:#111; }
-    .wrap { max-width: var(--w); margin: 0 auto; padding: 24px; }
-    h1 { font-size: 1.6rem; margin: 12px 0 8px; }
-    .note { background: #fff; border: 1px solid #e6e6e6; border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+           background:#fafafa; color:#111; max-width:860px; margin:0 auto; padding:24px; }
     .sec { background:#fff; border:1px solid #ececec; border-radius: 12px; padding: 18px; margin: 16px 0; }
     .q { margin: 14px 0; }
     .q b { display:block; margin-bottom:8px; }
     label { display:block; padding:6px 0; }
-    .muted { color:#666; font-size: .92rem; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 6px; }
-    button { padding: 12px 18px; font-size: 1rem; border-radius: 10px; border: 1px solid #111; background:#111; color:#fff; cursor:pointer; }
-    button[disabled] { opacity:.6; cursor:not-allowed; }
-    .ok { color:#0a7e07; }
-    .err { color:#b00020; }
-    .hide { display:none; }
-    .req { color:#b00020; font-weight:600; margin-left:4px; }
-    .matrix { border-collapse: collapse; width: 100%; }
-    .matrix th, .matrix td { border: 1px solid #eee; padding: 8px; text-align: center; }
-    .matrix th:first-child, .matrix td:first-child { text-align: left; min-width: 200px; }
+    .muted { color:#666; font-size:.92rem; }
+    button { padding: 12px 18px; border-radius:10px; border:1px solid #111; background:#111; color:#fff; cursor:pointer; }
+    .hide{display:none} .ok{color:#0a7e07} .err{color:#b00020}
+    input[type="text"]{ padding:6px 8px; border:1px solid #ddd; border-radius:8px; }
   </style>
 </head>
 <body>
-<div class="wrap">
+<h1>Survey on Capsule Coffee Machines</h1>
+<p><b>Purpose:</b> This survey is part of a product research study to understand coffee habits and desired features for capsule coffee machines.
+   <b>Duration:</b> About 4–6 minutes. <b>Anonymity:</b> No personal identifying information is collected; results are analyzed in aggregate only.</p>
 
-  <h1>Survey on Capsule Coffee Machines</h1>
-  <div class="note">
-    <p><strong>Purpose:</strong> This survey is part of a product research study to understand coffee habits and desired features for capsule coffee machines.</p>
-    <p><strong>Duration:</strong> Approximately 5–7 minutes.</p>
-    <p><strong>Anonymity:</strong> No personal identifying information is collected. Results are analyzed in aggregate only.</p>
+<!-- Quick connectivity test -->
+<div class="sec">
+  <h2>Quick Test (Ping)</h2>
+  <p class="muted">Click to send a test row to your Google Sheet (via GET). If you don't see a <b>PING</b> row in the sheet, your Web App URL or permissions are wrong.</p>
+  <button id="pingBtn">Send a test ping</button>
+  <span id="pingMsg" class="muted"></span>
+</div>
+
+<!-- Section 1 -->
+<div class="sec">
+  <h2>Section 1: Your Coffee Habits</h2>
+
+  <div class="q">
+    <b>Q1. How many cups of coffee do you typically drink per day? <span class="muted">*</span></b>
+    <label><input type="radio" name="q1" value="None"> None</label>
+    <label><input type="radio" name="q1" value="1-2 cups"> 1–2 cups</label>
+    <label><input type="radio" name="q1" value="3-4 cups"> 3–4 cups</label>
+    <label><input type="radio" name="q1" value="5 or more cups"> 5 or more cups</label>
   </div>
 
-  <!-- Section 1: Your Coffee Habits -->
-  <div class="sec">
-    <h2>Section 1: Your Coffee Habits</h2>
-
-    <div class="q">
-      <b>Q1. How many cups of coffee do you typically drink per day? <span class="req">*</span></b>
-      <label><input type="radio" name="q1" value="None"> None</label>
-      <label><input type="radio" name="q1" value="1-2 cups"> 1–2 cups</label>
-      <label><input type="radio" name="q1" value="3-4 cups"> 3–4 cups</label>
-      <label><input type="radio" name="q1" value="5 or more cups"> 5 or more cups</label>
-    </div>
-
-    <div class="q">
-      <b>Q2. Where do you typically drink coffee? (Select all that apply) <span class="req">*</span></b>
-      <label><input type="checkbox" name="q2" value="At home"> At home</label>
-      <label><input type="checkbox" name="q2" value="At the office"> At the office</label>
-      <label><input type="checkbox" name="q2" value="At a coffee shop"> At a coffee shop</label>
-      <label><input type="checkbox" name="q2" value="On the go"> On the go</label>
-    </div>
-
-    <div class="q">
-      <b>Q3. What types of coffee beverages do you enjoy most? (Select up to 3) <span class="req">*</span></b>
-      <label><input type="checkbox" name="q3" value="Black coffee (Americano, filter)"> Black coffee (Americano, filter)</label>
-      <label><input type="checkbox" name="q3" value="Espresso"> Espresso</label>
-      <label><input type="checkbox" name="q3" value="Latte"> Latte</label>
-      <label><input type="checkbox" name="q3" value="Cappuccino"> Cappuccino</label>
-      <label><input type="checkbox" name="q3" value="Iced coffee"> Iced coffee</label>
-      <label><input type="checkbox" name="q3" value="Flavored coffee (e.g., vanilla, caramel)"> Flavored coffee (e.g., vanilla, caramel)</label>
-      <label><input type="checkbox" name="q3" value="Other"> Other (please specify): <input type="text" id="q3_other" placeholder="Specify"/></label>
-      <div class="muted">Please select no more than 3 options.</div>
-    </div>
+  <div class="q">
+    <b>Q2. Where do you typically drink coffee? (Select all that apply) <span class="muted">*</span></b>
+    <label><input type="checkbox" name="q2" value="At home"> At home</label>
+    <label><input type="checkbox" name="q2" value="At the office"> At the office</label>
+    <label><input type="checkbox" name="q2" value="At a coffee shop"> At a coffee shop</label>
+    <label><input type="checkbox" name="q2" value="On the go"> On the go</label>
   </div>
 
-  <!-- Section 2: Your Current Coffee Machine -->
-  <div class="sec">
-    <h2>Section 2: Your Current Coffee Machine</h2>
+  <div class="q">
+    <b>Q3. What types of coffee beverages do you enjoy most? (Select up to 3) <span class="muted">*</span></b>
+    <label><input type="checkbox" name="q3" value="Black coffee (Americano, filter)"> Black coffee (Americano, filter)</label>
+    <label><input type="checkbox" name="q3" value="Espresso"> Espresso</label>
+    <label><input type="checkbox" name="q3" value="Latte"> Latte</label>
+    <label><input type="checkbox" name="q3" value="Cappuccino"> Cappuccino</label>
+    <label><input type="checkbox" name="q3" value="Iced coffee"> Iced coffee</label>
+    <label><input type="checkbox" name="q3" value="Flavored coffee (e.g., vanilla, caramel)"> Flavored coffee (e.g., vanilla, caramel)</label>
+    <label><input type="checkbox" name="q3" value="Other"> Other (please specify): <input type="text" id="q3_other" placeholder="Specify"/></label>
+    <div class="muted">Please select no more than 3 options.</div>
+  </div>
+</div>
 
-    <div class="q">
-      <b>Q4. Do you currently own a coffee machine? <span class="req">*</span></b>
-      <label><input type="radio" name="q4" value="Yes"> Yes</label>
-      <label><input type="radio" name="q4" value="No"> No</label>
-      <div class="muted">If No, you may skip Q5–Q8.</div>
-    </div>
+<!-- Section 2 -->
+<div class="sec">
+  <h2>Section 2: Your Current Coffee Machine</h2>
 
-    <div class="q">
-      <b>Q5. What type of coffee machine do you like?</b>
-      <label><input type="radio" name="q5" value="Capsule/pod coffee machine"> Capsule/pod coffee machine</label>
-      <label><input type="radio" name="q5" value="Drip coffee maker"> Drip coffee maker</label>
-      <label><input type="radio" name="q5" value="Espresso machine (manual/semi-automatic)"> Espresso machine (manual/semi-automatic)</label>
-      <label><input type="radio" name="q5" value="Bean-to-cup machine"> Bean-to-cup machine</label>
-      <label><input type="radio" name="q5" value="Multiple capsule coffee machine"> Multiple capsule coffee machine</label>
-      <label><input type="radio" name="q5" value="Other"> Other (please specify): <input type="text" id="q5_other" placeholder="Specify"/></label>
-    </div>
-
-    <div class="q">
-      <b>Q6. If you own a capsule coffee machine, which brand is it?</b>
-      <label><input type="radio" name="q6" value="Nespresso"> Nespresso</label>
-      <label><input type="radio" name="q6" value="Keurig"> Keurig</label>
-      <label><input type="radio" name="q6" value="Tassimo"> Tassimo</label>
-      <label><input type="radio" name="q6" value="Dolce Gusto"> Dolce Gusto</label>
-      <label><input type="radio" name="q6" value="Other"> Other (please specify): <input type="text" id="q6_other" placeholder="Specify"/></label>
-      <label><input type="radio" name="q6" value="I don't own a capsule machine"> I don't own a capsule machine</label>
-    </div>
-
-    <div class="q">
-      <b>Q7. How satisfied are you with your current coffee machine? (1 = Very Dissatisfied, 5 = Very Satisfied)</b>
-      <label><input type="radio" name="q7" value="1"> 1</label>
-      <label><input type="radio" name="q7" value="2"> 2</label>
-      <label><input type="radio" name="q7" value="3"> 3</label>
-      <label><input type="radio" name="q7" value="4"> 4</label>
-      <label><input type="radio" name="q7" value="5"> 5</label>
-    </div>
-
-    <div class="q">
-      <b>Q8. What are the main pain points with your current home coffee maker? (Select all that apply)</b>
-      <label><input type="checkbox" name="q8" value="Milk system is hard to clean"> Milk system is hard to clean</label>
-      <label><input type="checkbox" name="q8" value="Need to descale frequently (limescale)"> Need to descale frequently (limescale)</label>
-      <label><input type="checkbox" name="q8" value="Too noisy"> Too noisy</label>
-      <label><input type="checkbox" name="q8" value="Takes up too much space"> Takes up too much space</label>
-      <label><input type="checkbox" name="q8" value="First cup takes too long"> First cup takes too long</label>
-      <label><input type="checkbox" name="q8" value="Taste is inconsistent"> Taste is inconsistent</label>
-      <label><input type="checkbox" name="q8" value="Pods/capsules are expensive"> Pods/capsules are expensive</label>
-      <label><input type="checkbox" name="q8" value="Reliability/repairs"> Reliability/repairs</label>
-      <label><input type="checkbox" name="q8" value="Other"> Other (please specify): <input type="text" id="q8_other" placeholder="Specify"/></label>
-      <label><input type="checkbox" name="q8" value="None of the above"> None of the above</label>
-    </div>
+  <div class="q">
+    <b>Q4. Do you currently own a coffee machine? <span class="muted">*</span></b>
+    <label><input type="radio" name="q4" value="Yes"> Yes</label>
+    <label><input type="radio" name="q4" value="No"> No</label>
+    <div class="muted">If No, you may skip Q5–Q8.</div>
   </div>
 
-  <!-- Section 3: Desired Features (Best-only “MaxDiff” simplified) -->
-  <div class="sec">
-    <h2>Section 3: Desired Features in a New Capsule Coffee Machine</h2>
-    <p class="muted">Best-only choice: In each question, select the ONE most important feature.</p>
-
-    <div id="bestonly"></div>
+  <div class="q">
+    <b>Q5. What type of coffee machine do you like?</b>
+    <label><input type="radio" name="q5" value="Capsule/pod coffee machine"> Capsule/pod coffee machine</label>
+    <label><input type="radio" name="q5" value="Drip coffee maker"> Drip coffee maker</label>
+    <label><input type="radio" name="q5" value="Espresso machine (manual/semi-automatic)"> Espresso machine (manual/semi-automatic)</label>
+    <label><input type="radio" name="q5" value="Bean-to-cup machine"> Bean-to-cup machine</label>
+    <label><input type="radio" name="q5" value="Multiple capsule coffee machine"> Multiple capsule coffee machine</label>
+    <label><input type="radio" name="q5" value="Other"> Other (please specify): <input type="text" id="q5_other" placeholder="Specify"/></label>
   </div>
 
-  <!-- Section 4: Price -->
-  <div class="sec">
-    <h2>Section 4: Price</h2>
-
-    <div class="q">
-      <b>Q10. How much would you be willing to spend on a new capsule coffee machine with your desired features?</b>
-      <label><input type="radio" name="q10" value="Under $100"> Under $100</label>
-      <label><input type="radio" name="q10" value="$100 - $199"> $100 – $199</label>
-      <label><input type="radio" name="q10" value="$200 - $299"> $200 – $299</label>
-      <label><input type="radio" name="q10" value="$300 - $399"> $300 – $399</label>
-      <label><input type="radio" name="q10" value="$400 or more"> $400 or more</label>
-    </div>
-
-    <div class="q">
-      <b>Q11. How much extra would you be willing to pay for a machine with advanced smart features (e.g., app control, voice commands)?</b>
-      <label><input type="radio" name="q11" value="$0">$0</label>
-      <label><input type="radio" name="q11" value="$10 - $29">$10 – $29</label>
-      <label><input type="radio" name="q11" value="$30 - $49">$30 – $49</label>
-      <label><input type="radio" name="q11" value="$50 or more">$50 or more</label>
-    </div>
+  <div class="q">
+    <b>Q6. If you own a capsule coffee machine, which brand is it?</b>
+    <label><input type="radio" name="q6" value="Nespresso"> Nespresso</label>
+    <label><input type="radio" name="q6" value="Keurig"> Keurig</label>
+    <label><input type="radio" name="q6" value="Tassimo"> Tassimo</label>
+    <label><input type="radio" name="q6" value="Dolce Gusto"> Dolce Gusto</label>
+    <label><input type="radio" name="q6" value="Other"> Other (please specify): <input type="text" id="q6_other" placeholder="Specify"/></label>
+    <label><input type="radio" name="q6" value="I don't own a capsule machine"> I don't own a capsule machine</label>
   </div>
 
-  <div class="sec">
-    <button id="submitBtn">Submit</button>
-    <div id="msg" class="muted"></div>
-    <p id="ok" class="ok hide">Thanks! Your response has been recorded.</p>
-    <p id="err" class="err hide">Submit failed. Please try again later.</p>
+  <div class="q">
+    <b>Q7. How satisfied are you with your current coffee machine? (1 = Very Dissatisfied, 5 = Very Satisfied)</b>
+    <label><input type="radio" name="q7" value="1"> 1</label>
+    <label><input type="radio" name="q7" value="2"> 2</label>
+    <label><input type="radio" name="q7" value="3"> 3</label>
+    <label><input type="radio" name="q7" value="4"> 4</label>
+    <label><input type="radio" name="q7" value="5"> 5</label>
   </div>
 
+  <div class="q">
+    <b>Q8. What are the main pain points with your current home coffee maker? (Select all that apply)</b>
+    <label><input type="checkbox" name="q8" value="Milk system is hard to clean"> Milk system is hard to clean</label>
+    <label><input type="checkbox" name="q8" value="Need to descale frequently (limescale)"> Need to descale frequently (limescale)</label>
+    <label><input type="checkbox" name="q8" value="Too noisy"> Too noisy</label>
+    <label><input type="checkbox" name="q8" value="Takes up too much space"> Takes up too much space</label>
+    <label><input type="checkbox" name="q8" value="First cup takes too long"> First cup takes too long</label>
+    <label><input type="checkbox" name="q8" value="Taste is inconsistent"> Taste is inconsistent</label>
+    <label><input type="checkbox" name="q8" value="Pods/capsules are expensive"> Pods/capsules are expensive</label>
+    <label><input type="checkbox" name="q8" value="Reliability/repairs"> Reliability/repairs</label>
+    <label><input type="checkbox" name="q8" value="Other"> Other (please specify): <input type="text" id="q8_other" placeholder="Specify"/></label>
+    <label><input type="checkbox" name="q8" value="None of the above"> None of the above</label>
+  </div>
+</div>
+
+<!-- Section 3 -->
+<div class="sec">
+  <h2>Section 3: Desired Features in a New Capsule Coffee Machine</h2>
+  <p class="muted">Best-only choice: In each question, select the ONE most important feature.</p>
+  <div id="bestonly"></div>
+</div>
+
+<!-- Section 4 -->
+<div class="sec">
+  <h2>Section 4: Price</h2>
+  <div class="q">
+    <b>Q10. How much would you be willing to spend on a new capsule coffee machine with your desired features?</b>
+    <label><input type="radio" name="q10" value="Under $100"> Under $100</label>
+    <label><input type="radio" name="q10" value="$100 - $199"> $100 – $199</label>
+    <label><input type="radio" name="q10" value="$200 - $299"> $200 – $299</label>
+    <label><input type="radio" name="q10" value="$300 - $399"> $300 – $399</label>
+    <label><input type="radio" name="q10" value="$400 or more"> $400 or more</label>
+  </div>
+  <div class="q">
+    <b>Q11. How much extra would you be willing to pay for a machine with advanced smart features (e.g., app control, voice commands)?</b>
+    <label><input type="radio" name="q11" value="$0">$0</label>
+    <label><input type="radio" name="q11" value="$10 - $29">$10 – $29</label>
+    <label><input type="radio" name="q11" value="$30 - $49">$30 – $49</label>
+    <label><input type="radio" name="q11" value="$50 or more">$50 or more</label>
+  </div>
+</div>
+
+<div class="sec">
+  <button id="submitBtn">Submit</button>
+  <span id="msg" class="muted"></span>
+  <p id="ok" class="ok hide">Thanks! Your response has been recorded.</p>
+  <p id="err" class="err hide">Submit failed. Please try again later.</p>
 </div>
 
 <script>
-// ====== CONFIG ======
-const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwpE0-dG1tAN6MQIIBL0kfPp0Nw50pmarszPQXDYWOjsgMUr72oaKPSov3tz91jCBv7/exec'; // <-- replace
-// Best-only fixed tasks (each item appears twice)
+// ============== CONFIG ==============
+const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/PASTE_YOUR_WEB_APP_URL/exec'; // <- 部署好后替换成你的 /exec
+
+// 固定的 4 题（每个功能出现两次），题内顺序对每位受访者随机
 const TASKS = [
   ['A','B','C','D'], // Q9-1
   ['E','F','G','H'], // Q9-2
@@ -185,98 +174,91 @@ const ITEMS = {
   'H':'Adjustable spout for different cups'
 };
 
-// ====== RENDER BEST-ONLY BLOCK ======
+// ============== RENDER Q9 BLOCKS ==============
 const wrap = document.getElementById('bestonly');
-TASKS.forEach((optArr, idx) => {
-  const qId = `q9_${idx+1}`;
-  // shuffle options per respondent
-  const shuffled = optArr.map(v=>[Math.random(), v]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+TASKS.forEach((arr, i) => {
+  const shuffled = arr.map(v=>[Math.random(),v]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+  const qid = `q9_${i+1}`;
   const div = document.createElement('div');
   div.className = 'q';
-  let html = `<b>Q9-${idx+1}. Which ONE feature is the most important to you?</b>`;
-  shuffled.forEach(o => {
-    html += `<label><input type="radio" name="${qId}" value="${o}"> ${o}. ${ITEMS[o]}</label>`;
-  });
-  div.innerHTML = html;
+  div.innerHTML = `<b>Q9-${i+1}. Which ONE feature is the most important to you?</b>` +
+    shuffled.map(o=>`<label><input type="radio" name="${qid}" value="${o}"> ${o}. ${ITEMS[o]}</label>`).join('');
   wrap.appendChild(div);
 });
 
-// ====== HELPERS ======
-function uid(){
-  const k='survey_uid';
-  let v = localStorage.getItem(k);
-  if(!v){ v = 'u_' + Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem(k,v); }
-  return v;
-}
-function getChecked(name){
-  const sel = document.querySelector(`input[name="${name}"]:checked`);
-  return sel ? sel.value : '';
-}
-function getCheckedValues(name){
-  return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(el=>el.value);
-}
+// ============== HELPERS ==============
+function getRadio(name){ const el=document.querySelector(`input[name="${name}"]:checked`); return el?el.value:''; }
+function getChecks(name){ return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(x=>x.value); }
+function uid(){ const k='survey_uid'; let v=localStorage.getItem(k); if(!v){ v='u_'+Math.random().toString(36).slice(2)+Date.now().toString(36); localStorage.setItem(k,v);} return v; }
 function limitCheckbox(name, max){
   const boxes = Array.from(document.querySelectorAll(`input[name="${name}"]`));
-  boxes.forEach(b=>b.addEventListener('change', () => {
+  boxes.forEach(b=>b.addEventListener('change', ()=>{
     const picked = boxes.filter(x=>x.checked);
-    if(picked.length > max){
-      // uncheck the one just checked
-      b.checked = false;
-    }
+    if(picked.length>max){ b.checked=false; }
   }));
 }
-
-// enforce max 3 for Q3
 limitCheckbox('q3', 3);
 
-// ====== SUBMIT ======
-document.getElementById('submitBtn').addEventListener('click', async () => {
-  // basic required validation
-  const q1 = getChecked('q1');
-  const q2 = getCheckedValues('q2');
-  const q3 = getCheckedValues('q3');
-  const q4 = getChecked('q4');
-  const q5 = getChecked('q5');
-  const q6 = getChecked('q6');
-  const q7 = getChecked('q7');
-  const q8 = getCheckedValues('q8');
-  const q9_1 = getChecked('q9_1');
-  const q9_2 = getChecked('q9_2');
-  const q9_3 = getChecked('q9_3');
-  const q9_4 = getChecked('q9_4');
-  const q10 = getChecked('q10');
-  const q11 = getChecked('q11');
+// ============== SUBMIT ==============
+async function postJSON(url, obj){
+  // 用 text/plain 避免 CORS 预检；GAS 端仍可 JSON.parse 读取
+  const res = await fetch(url, {
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify(obj)
+  });
+  try { return await res.json(); } catch(e){ return {ok:true, opaque:true}; }
+}
 
-  // If Q4 = No, Q5–Q8 can be empty; otherwise recommend answers (not hard required here)
-  if(!q1 || q2.length===0 || q3.length===0 || !q9_1 || !q9_2 || !q9_3 || !q9_4){
-    document.getElementById('msg').textContent = 'Please complete all required questions (Q1–Q3 and Q9-1~Q9-4).';
-    return;
-  }
-  if(q3.length > 3){
-    document.getElementById('msg').textContent = 'Please select no more than 3 options in Q3.';
-    return;
-  }
+document.getElementById('submitBtn').addEventListener('click', async ()=>{
+  const must = (v)=>v && (Array.isArray(v)?v.length>0:true);
 
   const payload = {
     uid: uid(),
-    q1, q2, q3, q4, q5, q6, q7, q8, q9_1, q9_2, q9_3, q9_4, q10, q11,
+    q1:   getRadio('q1'),
+    q2:   getChecks('q2'),
+    q3:   getChecks('q3'),
+    q4:   getRadio('q4'),
+    q5:   getRadio('q5') || '',
+    q6:   getRadio('q6') || '',
+    q7:   getRadio('q7') || '',
+    q8:   getChecks('q8') || [],
+    q9_1: getRadio('q9_1'),
+    q9_2: getRadio('q9_2'),
+    q9_3: getRadio('q9_3'),
+    q9_4: getRadio('q9_4'),
+    q10:  getRadio('q10') || '',
+    q11:  getRadio('q11') || '',
     ts: new Date().toISOString()
   };
 
-  document.getElementById('msg').textContent = 'Submitting...';
+  // 必答校验：Q1、Q2、Q3(≤3)、Q9-1~4
+  const ok_required = must(payload.q1) && must(payload.q2) && must(payload.q3)
+                   && must(payload.q9_1) && must(payload.q9_2) && must(payload.q9_3) && must(payload.q9_4);
+  const msg = document.getElementById('msg');
+  if(!ok_required){ msg.textContent = 'Please complete required questions: Q1–Q3 and Q9-1~Q9-4.'; return; }
+  if(payload.q3.length>3){ msg.textContent = 'Q3: select no more than 3 options.'; return; }
+  msg.textContent = 'Submitting...';
+
   try{
-    await fetch(GAS_WEB_APP_URL, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(payload),
-      mode: 'no-cors'
-    });
+    await postJSON(GAS_WEB_APP_URL, payload);
     document.getElementById('ok').classList.remove('hide');
+    msg.textContent = '';
     document.getElementById('submitBtn').disabled = true;
-    document.getElementById('msg').textContent = '';
   }catch(e){
     document.getElementById('err').classList.remove('hide');
-    document.getElementById('msg').textContent = '';
+    msg.textContent = '';
+  }
+});
+
+// ============== PING (GET) ==============
+document.getElementById('pingBtn').addEventListener('click', async ()=>{
+  const u = GAS_WEB_APP_URL + '?ping=1&uid=' + encodeURIComponent(uid());
+  try{
+    await fetch(u, {method:'GET'});
+    document.getElementById('pingMsg').textContent = 'Ping sent. Check your sheet for a new row labeled [PING].';
+  }catch(e){
+    document.getElementById('pingMsg').textContent = 'Ping failed (check /exec URL & permissions).';
   }
 });
 </script>
